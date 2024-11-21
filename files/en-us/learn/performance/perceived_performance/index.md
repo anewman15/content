@@ -37,7 +37,8 @@ The perception of how quickly (and smoothly) pages load and respond to user inte
 
 A good general rule for improving perceived performance is that it is usually better to provide a quick response and regular status updates than make the user wait until an operation fully completes (before providing any information). For example, when loading a page it is better to display the text when it arrives rather than wait for all the images and other resources. Even though the content has not fully downloaded the user can see something is happening and they can start interacting with the content.
 
-> **Note:** Time appears to pass more quickly for users who are actively engaged, distracted, or entertained, than for those who are waiting passively for something to happen. Where possible, actively engage and inform users who are waiting for a task to complete.
+> [!NOTE]
+> Time appears to pass more quickly for users who are actively engaged, distracted, or entertained, than for those who are waiting passively for something to happen. Where possible, actively engage and inform users who are waiting for a task to complete.
 
 Similarly, it is better to display a "loading animation" as soon as a user clicks a link to perform a long-running operation. While this doesn't change the time taken to complete the operation, the site feels more responsive, and the user knows that it is working on something useful.
 
@@ -45,7 +46,7 @@ Similarly, it is better to display a "loading animation" as soon as a user click
 
 There is no single metric or test that can be run on a site to evaluate how a user "feels". However, there are a number of metrics that can be "helpful indicators":
 
-- [First paint](/en-US/docs/Glossary/First_paint)
+- [First Paint](/en-US/docs/Glossary/First_paint)
   - : The time to start of first paint operation. Note that this change may not be visible; it can be a simple background color update or something even less noticeable.
 - [First Contentful Paint](/en-US/docs/Glossary/First_contentful_paint) (FCP)
   - : The time until first significant rendering (e.g. of text, foreground or background image, canvas or SVG, etc.). Note that this content is not necessarily useful or meaningful.

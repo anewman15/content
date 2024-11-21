@@ -94,6 +94,15 @@ Groups group multiple patterns as a whole, and capturing groups provide extra su
       </td>
     </tr>
     <tr>
+      <td><code>(?<em>flags</em>:<em>x</em>)</code>, <code>(?:<em>flags</em>-<em>flags</em>:<em>x</em>)</code></td>
+      <td>
+        <p>
+          <a href="/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Modifier"><strong>Modifier:</strong></a>
+          Enables or disables the specified flags only to the enclosed pattern. Only the <code>i</code>, <code>m</code>, and <code>s</code> flags can be used in a modifier.
+        </p>
+      </td>
+    </tr>
+    <tr>
       <td>
         <code>\<em>n</em></code>
       </td>
@@ -160,9 +169,9 @@ const personList = `First_Name: John, Last_Name: Doe
 First_Name: Jane, Last_Name: Smith`;
 
 const regexpNames =
-  /First_Name: (?<firstname>\w+), Last_Name: (?<lastname>\w+)/g;
+  /First_Name: (?<firstName>\w+), Last_Name: (?<lastName>\w+)/g;
 for (const match of personList.matchAll(regexpNames)) {
-  console.log(`Hello ${match.groups.firstname} ${match.groups.lastname}`);
+  console.log(`Hello ${match.groups.firstName} ${match.groups.lastName}`);
 }
 ```
 
@@ -170,7 +179,7 @@ See more examples in the [named capturing group](/en-US/docs/Web/JavaScript/Refe
 
 ### Using groups and back references
 
-In this example, we first match a single or double quote character with `['"]`, remember it, match an arbitrary number of characters wih `.*?` (`*?` is a [non-greedy quantifier](/en-US/docs/Web/JavaScript/Guide/Regular_expressions/Quantifiers)), until we match the remembered quote character again with `\1`. The `\1` is a backreference to the first capturing group, which matches the same type of quote. The result will therefore be two strings: `"'"` and `'"'`.
+In this example, we first match a single or double quote character with `['"]`, remember it, match an arbitrary number of characters with `.*?` (`*?` is a [non-greedy quantifier](/en-US/docs/Web/JavaScript/Guide/Regular_expressions/Quantifiers)), until we match the remembered quote character again with `\1`. The `\1` is a backreference to the first capturing group, which matches the same type of quote. The result will therefore be two strings: `"'"` and `'"'`.
 
 ```js
 const quote = `Single quote "'" and double quote '"'`;

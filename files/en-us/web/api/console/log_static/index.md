@@ -13,10 +13,10 @@ The **`console.log()`** static method outputs a message to the console.
 ## Syntax
 
 ```js-nolint
-log(val1)
-log(val1, /* …, */ valN)
-log(msg)
-log(msg, subst1, /* …, */ substN)
+console.log(val1)
+console.log(val1, /* …, */ valN)
+console.log(msg)
+console.log(msg, subst1, /* …, */ substN)
 ```
 
 ### Parameters
@@ -26,7 +26,7 @@ log(msg, subst1, /* …, */ substN)
 - `msg`
   - : A JavaScript string containing zero or more substitution strings, which are replaced with `subst1` through `substN` in consecutive order up to the number of substitution strings. See [Using string substitutions](/en-US/docs/Web/API/console#using_string_substitutions) for a description of how substitutions work.
 - `subst1` … `substN`
-  - : JavaScript values with which to replace substitution strings within `msg`. If there are more substutition values than there are substitution strings, the extra values are themselves written to the console after the detailed assertion message in the same manner as when there's no format string.
+  - : JavaScript values with which to replace substitution strings within `msg`. If there are more substitution values than there are substitution strings, the extra values are themselves written to the console after the detailed assertion message in the same manner as when there's no format string.
 
 See [Outputting text to the console](/en-US/docs/Web/API/console#outputting_text_to_the_console) in the documentation of {{domxref("console")}} for further details.
 

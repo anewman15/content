@@ -30,7 +30,7 @@ For HTML elements, if an element doesn't have an accessible description, the des
    - {{htmlelement("input")}} buttons (with type attribute `button`, `submit` or `reset`) are described by their `value` attribute's value.
    - In SVG, the content of the [`<desc>`](/en-US/docs/Web/SVG/Element/desc) element, if present, otherwise, the text contained in descendant text container elements (i.e. [`<text>`](/en-US/docs/Web/SVG/Element/text)), if they are not already used for the {{glossary("accessible name")}}
 
-4. If none of the above provide a description, the [`title`](/en-US/docs/Web/HTML/Global_attributes#title) attribute is used, if the `title` is not the {{glossary("accessible name")}} for that element.
+4. If none of the above provide a description, the [`title`](/en-US/docs/Web/HTML/Global_attributes/title) attribute is used, if the `title` is not the {{glossary("accessible name")}} for that element.
 
 5. If none of the above defines an accessible description, the accessible description is empty.
 
@@ -46,8 +46,7 @@ The steps for defining accessible description in HTML are defined in the [HTML-A
 - [ARIA](/en-US/docs/Web/Accessibility/ARIA)
 - [The W3C Web Accessibility Initiative (WAI)](https://www.w3.org/WAI/)
 - [Accessible Rich Internet Applications (WAI-ARIA)](https://w3c.github.io/aria/)
-- [Glossary](/en-US/docs/Glossary)
-
+- Related glossary terms:
   - {{Glossary("Accessibility")}}
   - {{Glossary("Accessibility tree")}}
   - {{Glossary("Accessible name")}}

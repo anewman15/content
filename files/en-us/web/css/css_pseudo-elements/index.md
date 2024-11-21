@@ -23,11 +23,14 @@ Pseudo-elements enable targeting entities not included in HTML and sections of c
 - {{CSSXref("::first-letter")}}
 - {{CSSXref("::first-line")}}
 - {{CSSXref("::grammar-error")}}
+- {{CSSXref("::highlight()")}}
 - {{CSSXref("::marker")}}
 - {{CSSXref("::placeholder")}}
 - {{CSSXref("::selection")}}
 - {{CSSXref("::spelling-error")}}
 - {{CSSXref("::target-text")}}
+
+The specification also defines the `::details-content` and `::search-text` pseudo-elements and the `::postfix` and `::prefix` sub-pseudo elements. These are not yet supported by any browser. The {{CSSXref("::highlight()")}} pseudo-element is included within this module, but most details are provided in the [CSS custom highlight API](/en-US/docs/Web/API/CSS_Custom_Highlight_API).
 
 ### Interfaces
 
@@ -61,7 +64,6 @@ Pseudo-elements enable targeting entities not included in HTML and sections of c
 
   - {{cssxref("::cue")}}
   - {{cssxref("::cue", "::cue()")}}
-  - {{cssxref("::cue-region")}}
 
 - [CSS scoping](/en-US/docs/Web/CSS/CSS_scoping) module
 
@@ -73,6 +75,14 @@ Pseudo-elements enable targeting entities not included in HTML and sections of c
 - [CSS shadow parts](/en-US/docs/Web/CSS/CSS_shadow_parts) module
 
   - {{CSSXref("::part")}}
+
+- [CSS view transitions](/en-US/docs/Web/CSS/CSS_view_transitions) module
+
+  - {{cssxref("::view-transition")}} {{Experimental_Inline}}
+  - {{cssxref("::view-transition-image-pair()")}} {{Experimental_Inline}}
+  - {{cssxref("::view-transition-group()")}} {{Experimental_Inline}}
+  - {{cssxref("::view-transition-new()")}} {{Experimental_Inline}}
+  - {{cssxref("::view-transition-old()")}} {{Experimental_Inline}}
 
 - [CSS selectors](/en-US/docs/Web/CSS/CSS_selectors)
 
@@ -92,7 +102,7 @@ Pseudo-elements enable targeting entities not included in HTML and sections of c
   - {{cssxref("content")}} property
   - {{cssxref("quotes")}} property
 
-- [Text fragments](/en-US/docs/Web/Text_fragments)
+- [Text fragments](/en-US/docs/Web/URI/Fragment/Text_fragments)
 
 - {{DOMXref("AnimationEvent.pseudoElement")}} property
 - {{DOMXref("KeyframeEffect.pseudoElement")}} property
@@ -109,3 +119,4 @@ Pseudo-elements enable targeting entities not included in HTML and sections of c
 - [CSS shadow-parts](/en-US/docs/Web/CSS/CSS_shadow_parts) module
 - [CSS generated content](/en-US/docs/Web/CSS/CSS_generated_content) module
 - [CSS positioned layout](/en-US/docs/Web/CSS/CSS_positioned_layout) module
+- [CSS custom highlight API](/en-US/docs/Web/API/CSS_Custom_Highlight_API)

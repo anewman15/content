@@ -2,12 +2,10 @@
 title: Iterator.prototype.filter()
 slug: Web/JavaScript/Reference/Global_Objects/Iterator/filter
 page-type: javascript-instance-method
-status:
-  - experimental
 browser-compat: javascript.builtins.Iterator.filter
 ---
 
-{{JSRef}}{{SeeCompatTable}}
+{{JSRef}}
 
 The **`filter()`** method of {{jsxref("Iterator")}} instances returns a new [iterator helper](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Iterator#iterator_helpers) that yields only those elements of the iterator for which the provided callback function returns `true`.
 
@@ -32,7 +30,7 @@ A new [iterator helper](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Iter
 
 ## Description
 
-The main advantage of iterator helpers over array methods is their ability to work with infinite iterators. With infinite iterators, `filter()` allows you to iterate over only those elements that satisfy a given condition.
+The main advantage of iterator helpers over array methods is that they are lazy, meaning that they only produce the next value when requested. This avoids unnecessary computation and also allows them to be used with infinite iterators.
 
 ## Examples
 

@@ -59,7 +59,7 @@ _This interface also inherits from the {{DOMxRef("Node")}} and {{DOMxRef("EventT
   - : Returns the {{DOMxRef("FontFaceSet")}} interface of the current document.
 - {{DOMxRef("Document.forms")}} {{ReadOnlyInline}}
   - : Returns an {{DOMxRef("HTMLCollection")}} of the {{HTMLElement("form")}} elements in the document.
-- {{DOMxRef("Document.fragmentDirective")}} {{ReadOnlyInline}} {{Experimental_Inline}}
+- {{DOMxRef("Document.fragmentDirective")}} {{ReadOnlyInline}}
   - : Returns the {{domxref("FragmentDirective")}} for the current document.
 - {{DOMxRef("Document.fullscreenElement")}} {{ReadOnlyInline}}
   - : The element that's currently in full screen mode for this document.
@@ -173,7 +173,7 @@ _This interface also inherits from the {{DOMxRef("Node")}} and {{DOMxRef("EventT
 - {{DOMxRef("Document.adoptNode()")}}
   - : Adopt node from an external document.
 - {{DOMxRef("Document.append()")}}
-  - : Inserts a set of {{domxref("Node")}} objects or string objects after the last child of the document.
+  - : Inserts a set of {{domxref("Node")}} objects or strings after the last child of the document.
 - {{DOMxRef("Document.browsingTopics()")}} {{Experimental_Inline}} {{non-standard_inline}}
   - : Returns a promise that fulfills with an array of objects representing the top topics for the user, one from each of the last three epochs. By default, the method also causes the browser to record the current page visit as observed by the caller, so the page's hostname can later be used in topics calculation. See the [Topics API](/en-US/docs/Web/API/Topics_API) for more details.
 - {{DOMxRef("Document.captureEvents()")}} {{Deprecated_Inline}}
@@ -247,7 +247,7 @@ _This interface also inherits from the {{DOMxRef("Node")}} and {{DOMxRef("EventT
 - {{DOMxRef("Document.mozSetImageElement()")}} {{Non-standard_Inline}}
   - : Allows you to change the element being used as the background image for a specified element ID.
 - {{DOMxRef("Document.prepend()")}}
-  - : Inserts a set of {{domxref("Node")}} objects or string objects before the first child of the document.
+  - : Inserts a set of {{domxref("Node")}} objects or strings before the first child of the document.
 - {{DOMxRef("Document.querySelector()")}}
   - : Returns the first Element node within the document, in document order, that matches the specified selectors.
 - {{DOMxRef("Document.querySelectorAll()")}}
@@ -269,8 +269,8 @@ The `Document` interface is extended with the {{DOMxRef("XPathEvaluator")}} inte
 
 - {{DOMxRef("Document.createExpression()")}}
   - : Compiles an [`XPathExpression`](/en-US/docs/Web/API/XPathExpression) which can then be used for (repeated) evaluations.
-- {{DOMxRef("Document.createNSResolver()")}}
-  - : Creates an {{DOMxRef("XPathNSResolver")}} object.
+- {{DOMxRef("Document.createNSResolver()")}} {{deprecated_inline}}
+  - : Returns the input node as-is.
 - {{DOMxRef("Document.evaluate()")}}
   - : Evaluates an XPath expression.
 
@@ -364,6 +364,10 @@ Listen to these events using `addEventListener()` or by assigning an event liste
   - : Fired when the document view or an element has been scrolled.
 - {{DOMxRef("Document/scrollend_event", "scrollend")}}
   - : Fired when the document view or an element has completed scrolling.
+- {{domxref("Document/scrollsnapchange_event", "scrollsnapchange")}} {{experimental_inline}}
+  - : Fired on the scroll container at the end of a scrolling operation when a new scroll snap target has been selected.
+- {{domxref("Document/scrollsnapchanging_event", "scrollsnapchanging")}} {{experimental_inline}}
+  - : Fired on the scroll container when the browser determines a new scroll snap target is pending, i.e. it will be selected when the current scroll gesture ends.
 
 ### Selection events
 

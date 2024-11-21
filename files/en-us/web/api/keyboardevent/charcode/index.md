@@ -14,7 +14,8 @@ The **`charCode`** read-only property of the
 {{domxref("KeyboardEvent")}} interface returns the Unicode value of a character key
 pressed during a {{domxref("Element/keypress_event", "keypress")}} event.
 
-> **Warning:** Do not use this property, as it is deprecated. Instead, get the
+> [!WARNING]
+> Do not use this property, as it is deprecated. Instead, get the
 > Unicode value of the character using the {{domxref("KeyboardEvent.key", "key")}}
 > property.
 
@@ -56,11 +57,7 @@ input.addEventListener("keypress", (e) => {
   property, but never both. If the key pressed generates a character (e.g., 'a'),
   `charCode` is set to the code of that character; `charCode`
   respects the letter case (in other words, `charCode` takes into account
-  whether the
-
-  <kbd>shift</kbd>
-
-  key is held down). Otherwise, the code of the pressed key
+  whether the <kbd>shift</kbd> key is held down). Otherwise, the code of the pressed key
   is stored in `keyCode`.
 
 - When one or more modifier keys are pressed, there are some complex rules for

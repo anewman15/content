@@ -9,6 +9,9 @@ browser-compat: css.properties.object-fit
 
 The **`object-fit`** [CSS](/en-US/docs/Web/CSS) property sets how the content of a [replaced element](/en-US/docs/Web/CSS/Replaced_element), such as an {{HTMLElement("img")}} or {{HTMLElement("video")}}, should be resized to fit its container.
 
+> [!NOTE]
+> The `object-fit` property has no effect on {{HTMLElement("iframe")}}, {{HTMLElement("embed")}}, and {{HTMLElement("fencedframe")}} elements.
+
 You can alter the alignment of the replaced element's content object within the element's box using the {{cssxref("object-position")}} property.
 
 {{EmbedInteractiveExample("pages/css/object-fit.html")}}
@@ -35,7 +38,7 @@ The `object-fit` property is specified as a single keyword chosen from the list 
 ### Values
 
 - `contain`
-  - : The replaced content is scaled to maintain its {{glossary("aspect ratio")}} while fitting within the element's content box. The entire object is made to fill the box, while preserving its aspect ratio, so the object will be ["letterboxed"](<https://en.wikipedia.org/wiki/Letterboxing_(filming)>) if its aspect ratio does not match the aspect ratio of the box.
+  - : The replaced content is scaled to maintain its {{glossary("aspect ratio")}} while fitting within the element's content box. The entire object is made to fill the box, while preserving its aspect ratio, so the object will be ["letterboxed"](<https://en.wikipedia.org/wiki/Letterboxing_(filming)>) or ["pillarboxed"](https://en.wikipedia.org/wiki/Pillarbox) if its aspect ratio does not match the aspect ratio of the box.
 - `cover`
   - : The replaced content is sized to maintain its aspect ratio while filling the element's entire content box. If the object's aspect ratio does not match the aspect ratio of its box, then the object will be clipped to fit.
 - `fill`

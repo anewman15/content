@@ -72,7 +72,19 @@ For each property, the declaration that "wins" is the one from the origin with p
 
 In the example below, there are two links. The first has no author styles applied, so only user-agent styles are applied (and your personal user styles, if any). The second has [`text-decoration`](/en-US/docs/Web/CSS/text-decoration) and [`color`](/en-US/docs/Web/CSS/color) set by author styles even though the selector in the author stylesheet has a specificity of [`0-0-0`](/en-US/docs/Web/CSS/Specificity#selector_weight_categories). The reason why author styles "win" is because when there are conflicting styles from different origins, the rules from the origin with precedence are applied, irrespective of the specificity in the origin that doesn't have precedence.
 
-{{EmbedGHLiveSample("css-examples/learn/layers/basic-cascade.html", '100%', 500)}}
+```html live-sample___basic-cascade
+<p><a href="https://example.org">User agent styles</a></p>
+<p><a class="author" href="https://example.org">Author styles</a></p>
+```
+
+```css live-sample___basic-cascade
+:where(a.author) {
+  text-decoration: overline;
+  color: red;
+}
+```
+
+{{EmbedLiveSample("basic-cascade")}}
 
 The "competing" selector in the user-agent stylesheet at the time of this writing is `a:any-link`, which has a specificity weight of `0-1-1`. While this is greater than the `0-0-0` selector in the author stylesheet, even if the selector in your current user agent is different, it doesn't matter: the specificity weights from author and user-agent origins are never compared. Learn more about [how specificity weight is calculated](/en-US/docs/Web/CSS/Specificity#how_is_specificity_calculated).
 
@@ -128,13 +140,14 @@ The ability to create nested layers also removes the worry of having conflicting
 
 Layers can be created using any one of the following methods:
 
-- The `@layer` statement at-rule, declaring layers using `@layer` followed by the names of one or more layers. This creates named layers without assigning any styles to them.
+- The [`@layer`](/en-US/docs/Web/CSS/@layer) statement at-rule, declaring layers using `@layer` followed by the names of one or more layers. This creates named layers without assigning any styles to them.
 - The `@layer` block at-rule, in which all styles within a block are added to a named or unnamed layer.
 - The [`@import`](/en-US/docs/Web/CSS/@import) rule with the `layer` keyword or `layer()` function, which assigns the contents of the imported file into that layer.
 
 All three methods create a layer if a layer with that name has not already been initialized. If no layer name is provided in the `@layer` at-rule or `@import` with `layer()`, a new anonymous (unnamed) layer is created.
 
-> **Note:** The order of precedence of layers is the order in which they are created. Styles not in a layer, or "unlayered styles", cascade together into a final implicit label.
+> [!NOTE]
+> The order of precedence of layers is the order in which they are created. Styles not in a layer, or "unlayered styles", cascade together into a final implicit label.
 
 Let's cover the three ways of creating a layer in a little more detail before discussing nested layers.
 
@@ -156,7 +169,7 @@ If the above statement is the first line of a site's CSS, the layer order will b
 
 Layers can be created using the block `@layer` at-rule. If an `@layer` at-rule is followed by an identifier and a block of styles, the identifier is used to name the layer, and the styles in this at-rule are added to the layer's styles. If a layer with the specified name does not already exist, a new layer will be created. If a layer with the specified name already exists, the styles are added to the previously existing layer. If no name is specified while creating a block of styles using `@layer`, the styles in the at-rule will be added to a new anonymous layer.
 
-In the example below, we've used four block and one inline `@layer` at-rules. This CSS does the following in the order listed:
+In the example below, we've used four `@layer` block at-rules and one `@layer` statement at-rule. This CSS does the following in the order listed:
 
 1. Creates a named `layout` layer
 2. Creates an unnamed, anonymous layer
@@ -210,7 +223,8 @@ We assigned some styles to the layer named `layout`. If a named layer doesn't al
 
 Anonymous layers are created by assigning styles to a layer without naming the layer. Styles can be added to an unnamed layer only at the time of its creation.
 
-> **Note:** Subsequent use of `@layer` with no layer name creates additional unnamed layers; it does not append styles to a previously existing unnamed layer.
+> [!NOTE]
+> Subsequent use of `@layer` with no layer name creates additional unnamed layers; it does not append styles to a previously existing unnamed layer.
 
 The `@layer` at-rule creates a layer, named or not, or appends styles to a layer if the named layer already exists. We called the first anonymous layer `<anonymous(01)>` and the second `<anonymous(02)>`, this is just so we can explain them. These are actually unnamed layers. There is no way to reference them or add additional styles to them.
 
@@ -218,9 +232,32 @@ All styles declared outside of a layer are joined together in an implicit layer.
 
 In the line `@layer theme, layout, utilities;`, in which a series of layers were declared, only the `theme` and `utilities` layers were created; `layout` was already created in the first line. Note that this declaration does not change the order of already created layers. There is currently no way to re-order layers once declared.
 
-In the following interactive example, we assign styles to two layers, creating them and naming them in the process. Because they already exist, being created when first used, declaring them on the last line does nothing.
+In the following example, we assign styles to two layers, creating them and naming them in the process. Because they already exist, being created when first used, declaring them on the last line does nothing.
 
-{{EmbedGHLiveSample("css-examples/learn/layers/layer-order.html", '100%', 500)}}
+```html live-sample___layer-order
+<h1>Is this heading underlined?</h1>
+```
+
+```css live-sample___layer-order
+@layer page {
+  h1 {
+    text-decoration: overline;
+    color: red;
+  }
+}
+
+@layer site {
+  h1 {
+    text-decoration: underline;
+    color: green;
+  }
+}
+
+/* this does nothing */
+@layer site, page;
+```
+
+{{EmbedLiveSample("layer-order")}}
 
 Try moving the last line, `@layer site, page;`, to make it the first line. What happens?
 
@@ -228,7 +265,31 @@ Try moving the last line, `@layer site, page;`, to make it the first line. What 
 
 If you define a layer using [media](/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries) or [feature](/en-US/docs/Web/CSS/CSS_conditional_rules/Using_feature_queries) queries, and the media is not a match or the feature is not supported, the layer is not created. The example below shows how changing the size of your device or browser may change the layer order. In this example, we create the `site` layer only in wider browsers. We then assign styles to the `page` and `site` layers, in that order.
 
-{{EmbedGHLiveSample("css-examples/learn/layers/media-order.html", '100%', 500)}}
+```html live-sample___media-order
+<h1>Is this heading underlined?</h1>
+```
+
+```css live-sample___media-order
+@media (min-width: 50em) {
+  @layer site;
+}
+
+@layer page {
+  h1 {
+    text-decoration: overline;
+    color: red;
+  }
+}
+
+@layer site {
+  h1 {
+    text-decoration: underline;
+    color: green;
+  }
+}
+```
+
+{{EmbedLiveSample("media-order")}}
 
 In wide screens, the `site` layer is declared in the first line, meaning `site` has less precedence than `page`. Otherwise, `site` has precedence over `page` because it is declared later on narrow screens. If that doesn't work, try changing the `50em` in the media query to `10em` or `100em`.
 
@@ -256,13 +317,14 @@ You can import more than one CSS file into a single layer. The following declara
 You can import styles and create layers based on specific conditions using [media queries](/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries) and [feature queries](/en-US/docs/Web/CSS/CSS_conditional_rules/Using_feature_queries). The following imports a style sheet into an `international` layer only if the browser supports `display: ruby`, and the file being imported is dependent on the width of the screen.
 
 ```css
-@import url("ruby-narrow.css") layer(international) supports(display: ruby) and
+@import url("ruby-narrow.css") layer(international) supports(display: ruby)
   (width < 32rem);
-@import url("ruby-wide.css") layer(international) supports(display: ruby) and
+@import url("ruby-wide.css") layer(international) supports(display: ruby)
   (width >= 32rem);
 ```
 
-> **Note:** There is no equivalent of the {{HTMLElement('link')}} method of linking stylesheets. Use `@import` to import a stylesheet into a layer when you can't use `@layer` within the stylesheet.
+> [!NOTE]
+> There is no equivalent of the {{HTMLElement('link')}} method of linking stylesheets. Use `@import` to import a stylesheet into a layer when you can't use `@layer` within the stylesheet.
 
 ## Overview of nested cascade layers
 
@@ -282,12 +344,12 @@ Let's look at the following example:
 
 ```css
 @import url("components-lib.css") layer(components);
-@import url("narrowtheme.css") layer(components.narrow);
+@import url("narrow-theme.css") layer(components.narrow);
 ```
 
 In the first line, we import `components-lib.css` into the `components` layer. If that file contains any layers, named or not, those layers become nested layers within the `components` layer.
 
-The second line imports `narrowtheme.css` into the `narrow` layer, which is a sub-layer of `components`. The nested `components.narrow` gets created as the last layer within the `components` layer, unless `components-lib.css` already contains a `narrow` layer, in which case, the contents of `narrowtheme.css` would be appended to the `components.narrow` nested layer. Additional nested named layers can be added to the `components` layer using the pattern `components.<layerName>`. As mentioned before, unnamed layers can be created but they cannot be accessed subsequently.
+The second line imports `narrow-theme.css` into the `narrow` layer, which is a sub-layer of `components`. The nested `components.narrow` gets created as the last layer within the `components` layer, unless `components-lib.css` already contains a `narrow` layer, in which case, the contents of `narrow-theme.css` would be appended to the `components.narrow` nested layer. Additional nested named layers can be added to the `components` layer using the pattern `components.<layerName>`. As mentioned before, unnamed layers can be created but they cannot be accessed subsequently.
 
 Let's look at another example, where we [import `layers1.css` into a named layer](#the_layer_block_at-rule_for_named_and_anonymous_layers) using the following statement:
 
@@ -346,9 +408,53 @@ Inline important styles again have higher precedence than important styles decla
 
 Transitioning styles have the highest precedence. When a normal property value is being transitioned, it takes precedence over all other property value declarations, even inline important styles; but only while transitioning.
 
-{{EmbedGHLiveSample("css-examples/learn/layers/layer-precedence.html", '100%', 500)}}
+```html live-sample___layer-precedence
+<div>
+  <h1 style="color: yellow; background-color: maroon !important;">
+    Inline styles
+  </h1>
+</div>
+```
 
-In this example, there are two inline layers `A` and `B` without styles, a block of unlayered styles, and two blocks of styles in named layers `A` and `B`.
+```css live-sample___layer-precedence
+@layer A, B;
+
+h1 {
+  font-family: sans-serif;
+  margin: 1em;
+  padding: 0.2em;
+  color: orange;
+  background-color: green;
+  text-decoration: overline pink !important;
+  box-shadow: 5px 5px lightgreen !important;
+}
+
+@layer A {
+  h1 {
+    color: grey;
+    background-color: black !important;
+    text-decoration: line-through grey;
+    box-shadow: -5px -5px lightblue !important;
+    font-style: normal;
+    font-weight: normal !important;
+  }
+}
+
+@layer B {
+  h1 {
+    color: aqua;
+    background: yellow !important;
+    text-decoration: underline aqua;
+    box-shadow: -5px 5px magenta !important;
+    font-style: italic;
+    font-weight: bold !important;
+  }
+}
+```
+
+{{EmbedLiveSample("layer-precedence")}}
+
+In this example, two layers (`A` and `B`) are initially defined using an `@layer` statement at-rule without any styles. The layer styles are defined in two `@layer` block at-rules appearing after the `h1` CSS rule declared outside of any layer.
 
 The inline styles added on the `h1` element using the `style` attribute, set a normal `color` and an important `background-color`. Normal inline styles override all layered and unlayered normal styles. Important inline styles override all layered and unlayered normal and important author styles. There is no way for author styles to override important inline styles.
 

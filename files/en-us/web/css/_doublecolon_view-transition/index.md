@@ -2,12 +2,10 @@
 title: "::view-transition"
 slug: Web/CSS/::view-transition
 page-type: css-pseudo-element
-status:
-  - experimental
 browser-compat: css.selectors.view-transition
 ---
 
-{{CSSRef}}{{SeeCompatTable}}
+{{CSSRef}}
 
 The **`::view-transition`** [CSS](/en-US/docs/Web/CSS) [pseudo-element](/en-US/docs/Web/CSS/Pseudo-elements) represents the root of the [view transitions](/en-US/docs/Web/API/View_Transitions_API) overlay, which contains all view transition snapshot groups and sits over the top of all other page content.
 
@@ -51,4 +49,4 @@ All {{cssxref("::view-transition-group")}} pseudo-elements are positioned relati
 ## See also
 
 - [View Transitions API](/en-US/docs/Web/API/View_Transitions_API)
-- [Smooth and simple transitions with the View Transitions API](https://developer.chrome.com/docs/web-platform/view-transitions/)
+- [Smooth transitions with the View Transitions API](https://developer.chrome.com/docs/web-platform/view-transitions/)

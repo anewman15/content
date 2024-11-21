@@ -26,13 +26,17 @@ Here we go over how to set up an image map, and some downsides to consider first
   </tbody>
 </table>
 
-> **Warning:** This article discusses client-side image maps only. Do not use server-side image maps, which require the user to have a mouse.
+> [!WARNING]
+> This article discusses client-side image maps only. Do not use server-side image maps, which require the user to have a mouse.
 
 ## Image maps, and their drawbacks
 
 When you nest an image inside {{htmlelement('a')}}, the entire image links to one webpage. An image map, on the other hand, contains several active regions (called "hotspots") that each link to a different resource.
 
 Formerly, image maps were a popular navigation device, but it's important to thoroughly consider their performance and accessibility ramifications.
+
+> [!WARNING]
+> Multiple images referencing the same image map may lead to unexpected browser behavior, severely degrading usability and accessibility. For example, when a user keyboard navigates an image with a re-used image map in Safari and Chromium-based browsers, latter image instances using that same image map are skipped entirely. In Firefox, all image maps get keyboard focus simultaneously and when the user keyboard navigates past the image, the next focused element is the one after the last image instance, effectively skipping everything between the two images.
 
 [Text links](/en-US/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks) (perhaps styled with CSS) are preferable to image maps for several reasons: text links are lightweight, maintainable, often more SEO-friendly, and support accessibility needs (e.g., screen readers, text-only browsers, translation services).
 
@@ -86,7 +90,7 @@ Inside the `<map>` element, we need {{htmlelement('area')}} elements. An `<area>
 
 - [`alt`](/en-US/docs/Web/HTML/Element/area#alt)
 
-  - : A mandatory attribute, telling people where the link goes or what it does. `alt` text only displays when the image is unavailable. Please refer to our [guidelines for writing accessible link text.](/en-US/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks#writing_accessible_link_text)
+  - : A mandatory attribute, telling people where the link goes or what it does. `alt` text only displays when the image is unavailable. Please refer to our [guidelines for writing accessible link text.](/en-US/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks#use_clear_link_wording)
 
     You may write `alt=""` if the `href` attribute is blank _and_ the entire image already has an `alt` attribute.
 
@@ -117,4 +121,4 @@ If your image map is wider than about 240px, you'll need to make further adjustm
 - {{htmlelement("img")}}
 - {{htmlelement("map")}}
 - {{htmlelement("area")}}
-- [Online image map editor](https://maschek.hu/imagemap/imgmap/)
+- [Online image map editor](https://www.maschek.hu/imagemap/)

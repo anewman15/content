@@ -30,7 +30,8 @@ In the final couple of articles in the series, we will solidify your tooling kno
 
 There really are unlimited combinations of tools and ways to use them, what you see in this article and the next is only _one_ way that the featured tools can be used for a project.
 
-> **Note:** It's also worth repeating that not all of these tools need to be run on the command line. Many of today's code editors (such as VS Code) have integration support for a _lot_ of tools via plugins.
+> [!NOTE]
+> It's also worth repeating that not all of these tools need to be run on the command line. Many of today's code editors (such as VS Code) have integration support for a _lot_ of tools via plugins.
 
 ## Introducing our case study
 
@@ -40,11 +41,11 @@ The toolchain that we are creating in this article will be used to build and dep
 
 In this article we're going to use the following tools and features:
 
-- [JSX](https://react.dev/learn/writing-markup-with-jsx), a [React](https://react.dev)-related set of syntax extensions that allow you to do things like defining component structures inside JavaScript. You won't need to know React to follow this tutorial, but we've included this to give you an idea of how a non-native web language could be integrated into a toolchain.
+- [JSX](https://react.dev/learn/writing-markup-with-jsx), a [React](https://react.dev/)-related set of syntax extensions that allow you to do things like defining component structures inside JavaScript. You won't need to know React to follow this tutorial, but we've included this to give you an idea of how a non-native web language could be integrated into a toolchain.
 - The latest built-in JavaScript features (at the time of writing), such as [`import`](/en-US/docs/Web/JavaScript/Reference/Statements/import).
 - Useful development tools such as [Prettier](https://prettier.io/) for formatting and [ESLint](https://eslint.org/) for linting.
 - [PostCSS](https://postcss.org/) to provide CSS nesting capabilities.
-- [Vite](https://vitejs.dev/) to build and minify our code, and to write a bunch of configuration file content automatically for us.
+- [Vite](https://vite.dev/) to build and minify our code, and to write a bunch of configuration file content automatically for us.
 - [GitHub](/en-US/docs/Learn/Tools_and_testing/GitHub) to manage our source code control as well as to eventually deploy our site (using GitHub Pages).
 
 You may not be familiar with all the above features and tools or what they are doing, but don't panic — we'll explain each part as we move through this article.
@@ -186,7 +187,8 @@ Now that Prettier is installed and configured, running and tidying your code can
 npx prettier --write ./index.html
 ```
 
-> **Note:** In the command above, we use Prettier with the `--write` flag. Prettier understands this to mean "if there's any problem in my code format, go ahead and fix them, then save my file". This is fine for our development process, but we can also use `prettier` without the flag and it will only check the file. Checking the file (and not saving it) is useful for purposes like checks that run before a release - i.e. "don't release any code that's not been properly formatted."
+> [!NOTE]
+> In the command above, we use Prettier with the `--write` flag. Prettier understands this to mean "if there's any problem in my code format, go ahead and fix them, then save my file". This is fine for our development process, but we can also use `prettier` without the flag and it will only check the file. Checking the file (and not saving it) is useful for purposes like checks that run before a release - i.e. "don't release any code that's not been properly formatted."
 
 You can also replace `./index.html` with any other file or folder to format them. For example, `.` will format everything in the current directory. In case you may forget the syntax, you can add it as a custom script in your package.json too:
 
@@ -208,7 +210,8 @@ It can still be arduous to run the command every time we change something, and t
 - Using special "git hooks" to test if the code is formatted before a commit.
 - Using code editor plugins to run Prettier commands each time a file is saved.
 
-> **Note:** What is a git hook? Git (not GitHub) provides a system that lets us attach pre- and post- actions to the tasks we perform with git (such as committing your code). Although git hooks can be a bit overly complicated (in this author's opinion), once they're in place they can be very powerful. If you're interested in using hooks, [Husky](https://github.com/typicode/husky) is a greatly simplified route into using hooks.
+> [!NOTE]
+> What is a git hook? Git (not GitHub) provides a system that lets us attach pre- and post- actions to the tasks we perform with git (such as committing your code). Although git hooks can be a bit overly complicated (in this author's opinion), once they're in place they can be very powerful. If you're interested in using hooks, [Husky](https://github.com/typicode/husky) is a greatly simplified route into using hooks.
 
 For VS Code, one useful extension is the [Prettier Code Formatter by Esben Petersen](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode), which lets VSCode automatically format code upon saving. This means that any file in the project we are working on gets formatted nicely, including HTML, CSS, JavaScript, JSON, markdown, and more. All the editor needs is "Format On Save" enabled.
 
@@ -226,7 +229,7 @@ ESLint is installed via npm, so as per discussions in Chapter 2, you have the ch
 npm install --save-dev eslint@8 @eslint/js globals
 ```
 
-> **Note:** `esling@8` installs the version 8 of ESLint, while the latest is v9. This is because `eslint-plugin-react`, which we will use later, [does not support v9 yet](https://github.com/jsx-eslint/eslint-plugin-react/issues/3699).
+> **Note:** `eslint@8` installs the version 8 of ESLint, while the latest is v9. This is because `eslint-plugin-react`, which we will use later, [does not support v9 yet](https://github.com/jsx-eslint/eslint-plugin-react/issues/3699).
 
 The `@eslint/js` package provides predefined ESLint configuration, while the `globals` package provides a list of known global names in each environment. We will use them later in the configuration. Out of the box, ESLint is going to complain that it can't find the configuration file if you run it with `npx eslint`:
 
@@ -313,9 +316,10 @@ export default [
 ];
 ```
 
-> **Note:** Our configuration for `eslint-plugin-react-hooks` is a bit awkward, compared to the one-line additions for `eslint-plugin-react` configurations. This is because `eslint-plugin-react-hooks` doesn't support the new ESLint config format yet. See [facebook/react#28313](https://github.com/facebook/react/issues/28313) for more information.
+> [!NOTE]
+> Our configuration for `eslint-plugin-react-hooks` is a bit awkward, compared to the one-line additions for `eslint-plugin-react` configurations. This is because `eslint-plugin-react-hooks` doesn't support the new ESLint config format yet. See [facebook/react#28313](https://github.com/facebook/react/issues/28313) for more information.
 
-There's a complete [list of ESLint rules](https://eslint.org/docs/rules/) that you can tweak and configure to your heart's content and many companies and teams have published their [own ESLint configurations](https://www.npmjs.com/search?q=keywords:eslintconfig), which can sometimes be useful either to get inspiration or to select one that you feel suits your own standards. A forewarning though: ESLint configuration is a very deep rabbit hole!
+There's a complete [list of ESLint rules](https://eslint.org/docs/latest/rules/) that you can tweak and configure to your heart's content and many companies and teams have published their [own ESLint configurations](https://www.npmjs.com/search?q=keywords:eslintconfig), which can sometimes be useful either to get inspiration or to select one that you feel suits your own standards. A forewarning though: ESLint configuration is a very deep rabbit hole!
 
 For the sake of simplicity, in this chapter, we're not going to explore all the features of ESLint, since this configuration works for our particular project and its requirements. However, bear in mind that if you want to refine and enforce a rule about how your code looks (or validates), it's very likely that it can be done with the right ESLint configuration.
 
@@ -345,18 +349,19 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
+  base: "/npm-experiment/",
 });
 ```
 
-Read the [Vite documentation](https://vitejs.dev/guide/) for more information on how to configure Vite.
+Read the [Vite documentation](https://vite.dev/guide/) for more information on how to configure Vite. Because our site is deployed on GitHub pages, it will be hosted at `https://your-username.github.io/your-repo-name`, so you should set the `base` option according to your GitHub repository's name—but you can always adjust it later when we get to [deployment](/en-US/docs/Learn/Tools_and_testing/Understanding_client-side_tools/Deployment).
 
 ### CSS transformation
 
 Our CSS may also be using syntax not understood by browsers. For example, you may use a syntax that was only implemented in the last few browser versions, which means older browsers will fail on it and display broken style. We can use a tool to transform our CSS into a format that all browsers that we target can understand.
 
-[PostCSS](https://postcss.org/) is a CSS postprocessor tool. Compared to build tools like [Sass](https://sass-lang.com/), PostCSS is intended to write _standard_ CSS (that is, CSS syntax that may get into browsers one day), while Sass is a custom language by itself that compiles to CSS. PostCSS is closer to the web and has a much lower learning curve. [Vite supports PostCSS by default](https://vitejs.dev/guide/features.html#postcss), so you just need to [configure PostCSS](https://github.com/postcss/postcss#usage) if you want to compile any features. Check out the [cssdb](https://preset-env.cssdb.org/features/) for what features are supported.
+[PostCSS](https://postcss.org/) is a CSS postprocessor tool. Compared to build tools like [Sass](https://sass-lang.com/), PostCSS is intended to write _standard_ CSS (that is, CSS syntax that may get into browsers one day), while Sass is a custom language by itself that compiles to CSS. PostCSS is closer to the web and has a much lower learning curve. [Vite supports PostCSS by default](https://vite.dev/guide/features.html#postcss), so you just need to [configure PostCSS](https://github.com/postcss/postcss#usage) if you want to compile any features. Check out the [cssdb](https://preset-env.cssdb.org/features/) for what features are supported.
 
-For our purposes, we are going to demonstrate another CSS transformation: [CSS modules](https://vitejs.dev/guide/features.html#css-modules). It is one of the ways to achieve _CSS modularization_. Remember that CSS selectors are all global, so if you have a class name like `.button`, all elements with the class name `button` will be styled the same way. This often leads to naming conflicts — imagine all your JavaScript variables being defined at the global scope! CSS modules solve this problem by making the class name unique to the pages that use them. To understand how it works, after you've downloaded the source code, you can check how we use the `.module.css` files, and also read the [CSS modules documentation](https://github.com/css-modules/css-modules).
+For our purposes, we are going to demonstrate another CSS transformation: [CSS modules](https://vite.dev/guide/features.html#css-modules). It is one of the ways to achieve _CSS modularization_. Remember that CSS selectors are all global, so if you have a class name like `.button`, all elements with the class name `button` will be styled the same way. This often leads to naming conflicts — imagine all your JavaScript variables being defined at the global scope! CSS modules solve this problem by making the class name unique to the pages that use them. To understand how it works, after you've downloaded the source code, you can check how we use the `.module.css` files, and also read the [CSS modules documentation](https://github.com/css-modules/css-modules).
 
 Although this stage of our toolchain can be quite painful, because we've chosen a tool that purposely tries to reduce configuration and complexity, there's really nothing more we need to do during the development phase. Modules are correctly imported, nested CSS is correctly transformed to "regular CSS", and our development is unimpeded by the build process.
 

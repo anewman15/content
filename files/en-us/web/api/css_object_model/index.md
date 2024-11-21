@@ -32,12 +32,16 @@ The values of CSS are represented untyped, that is using {{JSxRef("String")}} ob
 - {{DOMxRef("CSSMediaRule")}}
 - {{DOMxRef("CSSNamespaceRule")}}
 - {{DOMxRef("CSSPageRule")}}
+- {{DOMxRef("CSSPositionTryRule")}}
+- {{DOMxRef("CSSPositionTryDescriptors")}}
 - {{DOMxRef("CSSRule")}}
 - {{DOMxRef("CSSRuleList")}}
+- {{DOMxRef("CSSStartingStyleRule")}}
 - {{DOMxRef("CSSStyleDeclaration")}}
 - {{DOMxRef("CSSStyleSheet")}}
 - {{DOMxRef("CSSStyleRule")}}
 - {{DOMxRef("CSSSupportsRule")}}
+- {{DOMXRef("CSSNestedDeclarations")}}
 - {{DOMxRef("FontFace")}}
 - {{DOMxRef("FontFaceSet")}}
 - {{DOMxRef("FontFaceSetLoadEvent")}}

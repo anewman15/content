@@ -1,7 +1,7 @@
 ---
 title: "console: countReset() static method"
 short-title: countReset()
-slug: Web/API/console/countreset_static
+slug: Web/API/console/countReset_static
 page-type: web-api-instance-method
 browser-compat: api.console.countReset_static
 ---
@@ -13,8 +13,8 @@ The **`console.countReset()`** static method resets counter used with {{domxref(
 ## Syntax
 
 ```js-nolint
-countReset()
-countReset(label)
+console.countReset()
+console.countReset(label)
 ```
 
 ### Parameters

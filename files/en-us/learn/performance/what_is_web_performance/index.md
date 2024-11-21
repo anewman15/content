@@ -45,22 +45,14 @@ Web performance is the objective measurement and perceived user experience of a 
 
 To summarize, many features impact performance including latency, application size, the number of DOM nodes, the number of resource requests made, JavaScript performance, CPU load, and more. It is important to minimize the loading and response times, and add additional features to conceal latency by making the experience as available and interactive as possible, as soon as possible, while asynchronously loading in the longer tail parts of the experience.
 
-> **Note:** Web performance includes both objective measurements like time to load, frames per second, and [time to interactive](/en-US/docs/Glossary/Time_to_interactive), and subjective experiences of how long it felt like it took the content to load.
+> [!NOTE]
+> Web performance includes both objective measurements like time to load, frames per second, and [time to interactive](/en-US/docs/Glossary/Time_to_interactive), and subjective experiences of how long it felt like it took the content to load.
 
 ## How content is rendered
 
 To effectively understand web performance, the issues behind it, and the major topic areas we mentioned above, you really should understand some specifics about how browsers work. This includes:
 
-- **How the browser works**. When you request a URL and hit
-
-  <kbd>Enter</kbd>
-
-  /
-
-  <kbd>Return</kbd>
-
-  , the browser finds out where the server is that holds that website's files, establishes a connection to it, and requests the files. See [Populating the page: how the browser works](/en-US/docs/Web/Performance/How_browsers_work) for a detailed overview.
-
+- **How the browser works**. When you request a URL and hit <kbd>Enter</kbd> / <kbd>Return</kbd>, the browser finds out where the server is that holds that website's files, establishes a connection to it, and requests the files. See [Populating the page: how the browser works](/en-US/docs/Web/Performance/How_browsers_work) for a detailed overview.
 - **Source order**. Your HTML index file's source order can significantly affect performance. The download of additional assets linked to from the index file is generally sequential, based on source order, but this can be manipulated and should definitely be optimized, realizing that some resources block additional downloads until their content is parsed and executed.
 - **The critical path**. This is the process that the browser uses to construct the web document once the files have been downloaded from the server. The browser follows a well-defined set of steps, and optimizing the critical rendering path to prioritize the display of content that relates to the current user action will lead to significant improvements in content rendering time. See [Critical rendering path](/en-US/docs/Web/Performance/Critical_rendering_path) for more information.
 - The **document object model**. The document object model, or DOM, is a tree structure that represents the content and elements of your HTML as a tree of nodes. This includes all the HTML attributes and the relationships between the nodes. Extensive DOM manipulation after the pages has loaded (e.g., adding, deleting, or moving of nodes) can affect performance, so it is worth understanding how the DOM works, and how such issues can be mitigated. Find out more at [Document Object Model](/en-US/docs/Web/API/Document_Object_Model).

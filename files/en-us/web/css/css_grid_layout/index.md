@@ -106,7 +106,6 @@ The example below shows a three-column track grid with new rows created at a min
 - {{CSSxRef("row-gap")}}
 - {{CSSxRef("column-gap")}}
 - {{CSSxRef("gap")}}
-- {{CSSxRef("masonry-auto-flow")}}
 
 ### Functions
 
@@ -139,7 +138,7 @@ The example below shows a three-column track grid with new rows created at a min
 
 ## See also
 
-- Glossary terms:
+- Glossary:
   - [Grid](/en-US/docs/Glossary/Grid)
   - [Grid lines](/en-US/docs/Glossary/Grid_Lines)
   - [Grid tracks](/en-US/docs/Glossary/Grid_Tracks)
@@ -155,4 +154,4 @@ The example below shows a three-column track grid with new rows created at a min
 - [CSS grid reference](https://tympanus.net/codrops/css_reference/grid/) via Codrops
 - [CSS grid inspector - Firefox DevTools](https://firefox-source-docs.mozilla.org/devtools-user/page_inspector/how_to/examine_grid_layouts/index.html)
 - [CSS grid playground](https://mozilladevelopers.github.io/playground/css-grid/)
-- [CSS grid garden](https://cssgridgarden.com) - A game for learning CSS grid
+- [CSS grid garden](https://cssgridgarden.com/) - A game for learning CSS grid

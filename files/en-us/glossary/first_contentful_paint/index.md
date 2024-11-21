@@ -1,5 +1,5 @@
 ---
-title: First contentful paint
+title: First Contentful Paint (FCP)
 slug: Glossary/First_contentful_paint
 page-type: glossary-definition
 ---
@@ -12,8 +12,9 @@ _The First Contentful Paint_ timestamp is when the browser first rendered any te
 
 ## See also
 
-- [First paint](/en-US/docs/Glossary/First_paint)
 - [`PerformancePaintTiming`](/en-US/docs/Web/API/PerformancePaintTiming)
-- [Largest Contentful Paint](/en-US/docs/Glossary/Largest_contentful_paint)
-- [First meaningful paint](/en-US/docs/Glossary/First_meaningful_paint)
+- Related glossary terms:
+  - {{Glossary("First Paint")}}
+  - {{Glossary("Largest Contentful Paint")}}
+  - {{Glossary("First Meaningful Paint")}}
 - [First Contentful Paint](https://web.dev/articles/fcp) at web.dev

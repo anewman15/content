@@ -2,12 +2,10 @@
 title: Iterator.prototype.map()
 slug: Web/JavaScript/Reference/Global_Objects/Iterator/map
 page-type: javascript-instance-method
-status:
-  - experimental
 browser-compat: javascript.builtins.Iterator.map
 ---
 
-{{JSRef}}{{SeeCompatTable}}
+{{JSRef}}
 
 The **`map()`** method of {{jsxref("Iterator")}} instances returns a new [iterator helper](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Iterator#iterator_helpers) that yields elements of the iterator, each transformed by a mapping function.
 
@@ -32,7 +30,7 @@ A new [iterator helper](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Iter
 
 ## Description
 
-The main advantage of iterator helpers over array methods is their ability to work with infinite iterators. With infinite iterators, `map()` allows you to create a new iterator that, when iterated, produces transformed elements.
+The main advantage of iterator helpers over array methods is that they are lazy, meaning that they only produce the next value when requested. This avoids unnecessary computation and also allows them to be used with infinite iterators. The `map()` method allows you to create a new iterator that, when iterated, produces transformed elements.
 
 ## Examples
 

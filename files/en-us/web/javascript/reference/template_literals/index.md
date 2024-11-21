@@ -74,6 +74,14 @@ string text line 2`);
 // string text line 2"
 ```
 
+Like [normal string literals](/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#escape_sequences), you can write a single-line string across multiple lines for source code readability, by escaping the newline with a backslash (`\`):
+
+```js
+console.log(`string text line 1 \
+string text line 2`);
+// "string text line 1 string text line 2"
+```
+
 ### String interpolation
 
 Without template literals, when you want to combine output from expressions with strings, you'd [concatenate them](/en-US/docs/Learn/JavaScript/First_steps/Strings#concatenation_using) using the [addition operator](/en-US/docs/Web/JavaScript/Reference/Operators/Addition) `+`:
@@ -262,7 +270,7 @@ function tag(strings) {
 }
 
 tag`string text line 1 \n string text line 2`;
-// Logs "string text line 1 \n string text line 2" ,
+// Logs "string text line 1 \n string text line 2",
 // including the two characters '\' and 'n'
 ```
 
@@ -318,14 +326,14 @@ In normal template literals, [the escape sequences in string literals](/en-US/do
 
 However, this is problematic for tagged templates, which, in addition to the "cooked" literal, also have access to the raw literals (escape sequences are preserved as-is).
 
-Tagged templates enable the embedding of arbitrary string content, where escape sequences may follow a different syntax. Consider for a simple example where we embed [LaTeX](https://en.wikipedia.org/wiki/LaTeX) source text in JavaScript via `String.raw`. We want to still be able to use LaTeX macros that start with `u` or `x` without following JavaScript syntax restrictions. Therefore, the syntax restriction of well-formed escape sequences is removed from tagged templates. The example below uses [MathJax](https://www.mathjax.org/) to render LaTeX in one element:
+Tagged templates enable the embedding of arbitrary string content, where escape sequences may follow a different syntax. Consider for an example where we embed [LaTeX](https://en.wikipedia.org/wiki/LaTeX) source text in JavaScript via `String.raw`. We want to still be able to use LaTeX macros that start with `u` or `x` without following JavaScript syntax restrictions. Therefore, the syntax restriction of well-formed escape sequences is removed from tagged templates. The example below uses [MathJax](https://www.mathjax.org/) to render LaTeX in one element:
 
 ```js
 const node = document.getElementById("formula");
 MathJax.typesetClear([node]);
 // Throws in older ECMAScript versions (ES2016 and earlier)
 // SyntaxError: malformed Unicode character escape sequence
-node.innerHTML = String.raw`$\underline{u}$`;
+node.textContent = String.raw`$\underline{u}$`;
 MathJax.typesetPromise([node]);
 ```
 

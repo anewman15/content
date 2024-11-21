@@ -9,7 +9,7 @@ browser-compat: css.properties.flex-shrink
 
 The **`flex-shrink`** [CSS](/en-US/docs/Web/CSS) property sets the flex shrink factor of a flex item. If the size of all flex items is larger than the flex container, the [flex items can shrink](/en-US/docs/Web/CSS/CSS_flexible_box_layout/Controlling_ratios_of_flex_items_along_the_main_axis#the_flex-shrink_property) to fit according to their `flex-shrink` value. Each flex line's [negative free space](/en-US/docs/Web/CSS/CSS_flexible_box_layout/Controlling_ratios_of_flex_items_along_the_main_axis#positive_and_negative_free_space) is distributed between the line's flex items that have a `flex-shrink` value greater than `0`.
 
-> ![Note]
+> [!NOTE]
 > It is recommended to use the {{cssxref("flex")}} shorthand instead of separate `flex-shrink`, {{cssxref("flex-grow")}} and {{cssxref("flex-basis")}} declarations. We have separated them here as this document covers one of the `flex` shorthand components: the `flex-shrink` property.
 
 {{EmbedInteractiveExample("pages/css/flex-shrink.html")}}
@@ -115,7 +115,7 @@ div {
 
 {{EmbedLiveSample('Setting_flex_item_shrink_factor', 500, 100)}}
 
-The flex items don't overflow their container because they are able to shrink: the `500px` of negative free space is distributed among the five items based on their flex-shrink`values. The first three items have`flex-shrink: 1`set. D has`flex-shrink: 1.5`and E has`flex-shrink: 2` set. The final width of D and E is less than the others, with E smaller than D.
+The flex items don't overflow their container because they are able to shrink: the `500px` of negative free space is distributed among the five items based on their `flex-shrink` values. The first three items have `flex-shrink: 1` set. D has `flex-shrink: 1.5` and E has `flex-shrink: 2` set. The final width of D and E is less than the others, with E smaller than D.
 
 ## Specifications
 
